@@ -16,7 +16,8 @@ function App() {
 const filterHandler = () => {
   switch(status) {
     case 'completed' :
-      setFilteredTodos(todos.filter(todo => ))
+      setFilteredTodos(todos.filter(todo => todo.completed === true ))
+      break;
   }
 }
 
