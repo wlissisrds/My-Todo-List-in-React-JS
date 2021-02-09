@@ -14,9 +14,12 @@ function App() {
   const [filterTodos, setFilteredTodos] = useState([])
   
   //useEffcet
+  //sempre executa as funções quando o estados de [todo ou status é alterado]
     useEffect(()=> {
       filterHandler();
+      salveLocalTodos();
     }, [todos, status])
+
 //Functions
 const filterHandler = () => {
   switch(status) {
@@ -29,6 +32,14 @@ const filterHandler = () => {
     default:
       setFilteredTodos(todos);
       break;
+  }
+}
+//SAVE TO LOCAL STORAGE
+const salveLocalTodos=()=>{
+  if(localStorage.getItem('todos') === null){
+    localStorage.setItem('todos', JSON.stringify([]));
+  }else {
+    localStorage.setItem('todos', JSON.stringify(todos))
   }
 }
 
